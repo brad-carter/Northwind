@@ -7,9 +7,9 @@ namespace Northwind.Web.Services
 	{
 		WeatherForecast ForecastFor(DateTime dateTime);
 
-		WeatherForecast ForecastForTemperature(DateTime dateTime, int temperature);
+		WeatherForecast ForecastForTemperature(DateTime dateTime, double temperature);
 
-		string SummaryFor(int temperature);
+		string SummaryFor(double temperature);
 	}
 
 
@@ -27,42 +27,43 @@ namespace Northwind.Web.Services
 				throw new ArgumentException("Cannot get a forecast for the past");
             } else {
 				var rng = new Random();
-				var temperatureC = rng.Next(-20, 55);
-				int temperatureF = (int) (temperatureC * (9 / 5) + 32);
+				var temperatureC = rng.Next(-20, 55) * 1.0;
 				return new WeatherForecast
 				{
 
 					Date = dateTime,
-					TemperatureC = temperatureF,
-					Summary = SummaryFor(temperatureF)
+					TemperatureC = temperatureC,
+					Summary = SummaryFor(temperatureC)
 
 				};
 			}
 			
 		}
 
-		public WeatherForecast ForecastForTemperature(DateTime dateTime, int temperature)
+		public WeatherForecast ForecastForTemperature(DateTime dateTime, double temperature)
         {
 			if (dateChecker(dateTime))
             {
 				throw new ArgumentException("Cannot get a forecast for the past");
             } else {
+
+				double temperatureC = ((temperature - 32.0) * (5.0 / 9.0)) * 1.0;
 				return new WeatherForecast
 				{
 					Date = dateTime,
-					TemperatureC = temperature,
-					Summary = SummaryFor(temperature)
+					TemperatureC = temperatureC,
+					Summary = SummaryFor(temperatureC)
 				};
             }
         }
-		public string SummaryFor(int temperature)
+		public string SummaryFor(double temperature)
 		{
 			int tempIndex = 0;
-			while (temperature < 140)
+			while (temperature < 54.8)
             {
-				tempIndex++;
-				temperature = temperature + 14;
-            }
+				temperature = temperature + 8.3333;
+				tempIndex = tempIndex + 1;
+			}
 
 			return Summaries[9-tempIndex];
 

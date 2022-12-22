@@ -37,7 +37,7 @@ namespace Northwind.Test.Features
 		
 
 		[Then(@"the forecast temperature F should be greater than (\d+)")]
-		public void The_forecast_temperature_F_should_be_greater_than(int temperature)
+		public void The_forecast_temperature_F_should_be_greater_than(double temperature)
 		{
 			Assert.True(_forecast.TemperatureF > temperature);
 		}
@@ -56,13 +56,12 @@ namespace Northwind.Test.Features
 		}
 
 		[Given(@"the weather forecast for (\d+)")]
-		public void The_weather_forecast_for_some_temperature(int temperature)
+		public void The_weather_forecast_for_some_temperature(double temperature)
 		{
 			_weather = new WeatherForecastService();
-
 			try
             {
-				_forecast = _weather.ForecastForTemperature(DateTime.Now, 70);
+				_forecast = _weather.ForecastForTemperature(DateTime.Now, temperature);
 
 			} catch (Exception e)
             {
