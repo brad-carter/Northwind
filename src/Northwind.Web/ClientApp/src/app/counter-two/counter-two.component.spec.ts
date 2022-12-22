@@ -3,7 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CounterTwoComponent } from './counter-two.component';
 
 describe('CounterTwoComponent', () => {
-  let component: CounterTwoComponent;
   let fixture: ComponentFixture<CounterTwoComponent>;
 
   beforeEach(async(() => {
@@ -15,7 +14,6 @@ describe('CounterTwoComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CounterTwoComponent);
-    component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
@@ -29,6 +27,7 @@ describe('CounterTwoComponent', () => {
     expect(countElement.textContent).toEqual('0');
 
     const incrementButton = fixture.nativeElement.querySelector('button');
+
     incrementButton.click();
     fixture.detectChanges();
     expect(countElement.textContent).toEqual('2');

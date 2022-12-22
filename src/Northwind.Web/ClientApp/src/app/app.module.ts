@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CounterTwoComponent } from './counter-two/counter-two.component';
+import { CounterNComponent } from './counter-n/counter-n.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CounterTwoComponent } from './counter-two/counter-two.component';
     HomeComponent,
     CounterComponent,
     CounterTwoComponent,
+    CounterNComponent,
     FetchDataComponent,
   ],
   imports: [
@@ -28,6 +30,7 @@ import { CounterTwoComponent } from './counter-two/counter-two.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'counter-two', component: CounterTwoComponent },
+      { path: 'counter-n', component: CounterNComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
