@@ -25,7 +25,7 @@ exports.config = {
     ]
   },
 
-  allScriptsTimeout: 11000,
+  allScriptsTimeout: 21000,
   capabilities: {
     browserName: 'chrome'
   },
@@ -41,4 +41,4 @@ exports.config = {
       project: require('path').join(__dirname, './tsconfig.e2e.json')
     });
   }
-};};
+};
